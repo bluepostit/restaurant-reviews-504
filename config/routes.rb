@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :restaurants do
+    # Nested!
+    resources :reviews, only: [:new, :create]
+
     collection do
       get 'top'
     end
@@ -10,4 +13,6 @@ Rails.application.routes.draw do
   end
   # get 'restaurants/top', to: 'restaurants#top', as: :top_restaurants
   # get 'restaurants/:id/chef', to: 'restaurants#chef', as: :chef_restaurant
+
+  resources :reviews, only: :destroy
 end
